@@ -12,6 +12,8 @@ struct ContentView: View {
     
     @State var fTimer = 60
     @State var timerRunning = false
+    @State var showingInputBox = false
+    @State var userTimerValue = ""
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -44,7 +46,7 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     Button("Set timer") {
-                        
+                        showingInputBox = true
                     }
                     .foregroundColor(.yellow)
                     .fontWeight(.bold)
@@ -72,6 +74,29 @@ struct ContentView: View {
                 
             }
         }
+        .sheet(isPresented : $showingInputBox) {
+            VStack {
+                Text("Enter the timer value")
+                    .font(.headline)
+                TextField("Seconds", text: $userTimerValue)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .keyboardType(.numberPad)
+                    .padding()
+                Button("Set Timer") {
+                    if let value = Int(userTimerValue), value > 0 {
+                        fTimer = value
+                        timerRunning = false
+                    }
+                    showingInputBox = false
+                }
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .clipShape(Capsule(style: .circular))
+            }
+            .padding()
+        }
+        
     }
 }
 
