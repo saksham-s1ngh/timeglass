@@ -6,14 +6,20 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ContentView: View {
+    
+    @State var fTimer = 60
+    @State var timerRunning = false
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         ZStack{
             VStack{
                 HStack {
                     Spacer()
-                    Text("THE TIMER GOES HERE")
+                    FlipTimer(fTimer: $fTimer, timerRunning : $timerRunning, timer: timer)
                         .frame(minWidth: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, minHeight: 44, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         .padding(10)
                         .background(
@@ -25,6 +31,8 @@ struct ContentView: View {
                 
                 Spacer()
                 
+                
+                
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
                     .frame(maxWidth: .infinity, maxHeight: 500)
@@ -35,18 +43,22 @@ struct ContentView: View {
                 
                 HStack {
                     Spacer()
-                    Button("Button 1") {
+                    Button("Set timer") {
                         
                     }
+                    .foregroundColor(.yellow)
+                    .fontWeight(.bold)
                     .padding()
                     .background(
                         Capsule(style: .circular)
                             .fill(Color(#colorLiteral(red: 0.6642268896, green: 0.6642268896, blue: 0.6642268896, alpha: 1)))
                     )
                     
-                    Button("Button 2") {
-                        
+                    Button("Start timer") {
+                        timerRunning.toggle()
                     }
+                    .foregroundColor(.yellow)
+                    .fontWeight(.bold)
                     .padding()
                     .background(
                         Capsule(style: .circular)
@@ -65,4 +77,26 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+struct FlipTimer : View {
+    
+    @Binding var fTimer : Int
+    @Binding var timerRunning : Bool
+    let timer : Publishers.Autoconnect<Timer.TimerPublisher>
+    
+    var body: some View {
+        VStack{
+            Text("\(fTimer)")
+                .onReceive(timer, perform: { _ in
+                    if fTimer > 0 && timerRunning {
+                        fTimer -= 1
+                    } else {
+                        timerRunning = false
+                    }
+                })
+                .font(.system(size: 80, weight: .bold))
+                .opacity(0.8)
+        }
+    }
 }
