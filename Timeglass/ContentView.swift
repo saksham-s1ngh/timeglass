@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var timerRunning = false
     @State var showingInputBox = false
     @State var userTimerValue = ""
+    @State var inputSetTime = 60
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -45,10 +46,17 @@ struct ContentView: View {
                 
                 HStack {
                     Spacer()
+                    
+                    Button(action: {
+                        resetTimer()
+                    }, label: {
+                        Text("Reset timer")
+                    })
+                    
                     Button("Set timer") {
                         showingInputBox = true
                     }
-                    .foregroundColor(.yellow)
+                    .foregroundColor(.black)
                     .fontWeight(.bold)
                     .padding()
                     .background(
@@ -59,7 +67,7 @@ struct ContentView: View {
                     Button("Start timer") {
                         timerRunning.toggle()
                     }
-                    .foregroundColor(.yellow)
+                    .foregroundColor(.black)
                     .fontWeight(.bold)
                     .padding()
                     .background(
@@ -85,6 +93,7 @@ struct ContentView: View {
                 Button("Set Timer") {
                     if let value = Int(userTimerValue), value > 0 {
                         fTimer = value
+                        inputSetTime = value
                         timerRunning = false
                     }
                     showingInputBox = false
@@ -96,7 +105,12 @@ struct ContentView: View {
             }
             .padding()
         }
+        .background(Color.green)
         
+    }
+    
+    func resetTimer() {
+        fTimer = inputSetTime
     }
 }
 
