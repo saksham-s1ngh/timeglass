@@ -47,11 +47,16 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     
-                    Button(action: {
+                    Button("Reset timer") {
                         resetTimer()
-                    }, label: {
-                        Text("Reset timer")
-                    })
+                    }
+                    .foregroundColor(.black)
+                    .fontWeight(.bold)
+                    .padding()
+                    .background(
+                        Capsule(style: .circular)
+                            .fill(Color(#colorLiteral(red: 0.6642268896, green: 0.6642268896, blue: 0.6642268896, alpha: 1)))
+                    )
                     
                     Button("Set timer") {
                         showingInputBox = true
