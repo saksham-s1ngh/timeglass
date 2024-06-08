@@ -49,16 +49,16 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     
-                    Button("Reset timer") {
-                        resetTimer()
-                    }
-                    .foregroundColor(.black)
-                    .fontWeight(.bold)
-                    .padding()
-                    .background(
-                        Capsule(style: .circular)
-                            .fill(Color(#colorLiteral(red: 0.6642268896, green: 0.6642268896, blue: 0.6642268896, alpha: 1)))
-                    )
+//                    Button("Reset timer") {
+//                        resetTimer()
+//                    }
+//                    .foregroundColor(.black)
+//                    .fontWeight(.bold)
+//                    .padding()
+//                    .background(
+//                        Capsule(style: .circular)
+//                            .fill(Color(#colorLiteral(red: 0.6642268896, green: 0.6642268896, blue: 0.6642268896, alpha: 1)))
+//                    )
                     
                     Button("Set timer") {
                         showingInputBox = true
@@ -173,6 +173,9 @@ class MotionManager: ObservableObject {
 }
 
 // end of code-block that i picked up
+
+
+
 
 struct FlipTimer : View {
     
