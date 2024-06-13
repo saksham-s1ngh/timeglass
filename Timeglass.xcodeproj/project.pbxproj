@@ -14,6 +14,8 @@
 		8E5739812BF58572003C49C8 /* TimeglassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5739802BF58572003C49C8 /* TimeglassTests.swift */; };
 		8E57398B2BF58572003C49C8 /* TimeglassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57398A2BF58572003C49C8 /* TimeglassUITests.swift */; };
 		8E57398D2BF58572003C49C8 /* TimeglassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E57398C2BF58572003C49C8 /* TimeglassUITestsLaunchTests.swift */; };
+		8EC32E382C1A846500497C59 /* hourglass2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8EC32E372C1A846500497C59 /* hourglass2.gif */; };
+		8EC32E3A2C1A84B900497C59 /* GIFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC32E392C1A84B900497C59 /* GIFImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		8E5739862BF58572003C49C8 /* TimeglassUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeglassUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E57398A2BF58572003C49C8 /* TimeglassUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeglassUITests.swift; sourceTree = "<group>"; };
 		8E57398C2BF58572003C49C8 /* TimeglassUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeglassUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8EC32E372C1A846500497C59 /* hourglass2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = hourglass2.gif; sourceTree = "<group>"; };
+		8EC32E392C1A84B900497C59 /* GIFImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				8E57396F2BF58571003C49C8 /* TimeglassApp.swift */,
+				8EC32E372C1A846500497C59 /* hourglass2.gif */,
+				8EC32E392C1A84B900497C59 /* GIFImage.swift */,
 				8E5739712BF58571003C49C8 /* ContentView.swift */,
 				8E5739732BF58572003C49C8 /* Assets.xcassets */,
 				8E5739752BF58572003C49C8 /* Preview Content */,
@@ -231,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EC32E382C1A846500497C59 /* hourglass2.gif in Resources */,
 				8E5739772BF58572003C49C8 /* Preview Assets.xcassets in Resources */,
 				8E5739742BF58572003C49C8 /* Assets.xcassets in Resources */,
 			);
@@ -257,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EC32E3A2C1A84B900497C59 /* GIFImage.swift in Sources */,
 				8E5739722BF58571003C49C8 /* ContentView.swift in Sources */,
 				8E5739702BF58571003C49C8 /* TimeglassApp.swift in Sources */,
 			);

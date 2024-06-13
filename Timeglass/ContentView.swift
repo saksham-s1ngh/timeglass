@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import CoreMotion
+import WebKit
 
 struct ContentView: View {
     
@@ -16,6 +17,7 @@ struct ContentView: View {
     @State var showingInputBox = false
     @State var userTimerValue = ""
     @State var inputSetTime = 60
+    @State var replayGIF = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @ObservedObject var motionManager = MotionManager()
     
@@ -37,28 +39,13 @@ struct ContentView: View {
                 Spacer()
                 
                 
-                
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.white)
-                    .frame(maxWidth: .infinity, maxHeight: 500)
-                    .padding()
-                    .shadow(color: .black.opacity(0.3), radius: 10, x: 0.0, y: 0)
+                GIFImage("hourglass2", replay: $replayGIF)
+                    .frame(width: 150, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 
                 Spacer()
                 
                 HStack {
                     Spacer()
-                    
-//                    Button("Reset timer") {
-//                        resetTimer()
-//                    }
-//                    .foregroundColor(.black)
-//                    .fontWeight(.bold)
-//                    .padding()
-//                    .background(
-//                        Capsule(style: .circular)
-//                            .fill(Color(#colorLiteral(red: 0.6642268896, green: 0.6642268896, blue: 0.6642268896, alpha: 1)))
-//                    )
                     
                     Button("Set timer") {
                         showingInputBox = true
@@ -73,6 +60,9 @@ struct ContentView: View {
                     
                     Button("Start timer") {
                         timerRunning.toggle()
+                        if timerRunning {
+                            replayGIF = true
+                        }
                     }
                     .foregroundColor(.black)
                     .fontWeight(.bold)
@@ -122,6 +112,7 @@ struct ContentView: View {
     
     func resetTimer() {
         fTimer = inputSetTime
+        replayGIF = true
     }
 }
 
@@ -167,15 +158,13 @@ class MotionManager: ObservableObject {
         }
     }
 
+    
     private func reset() {
         resetCallback?()
     }
 }
 
 // end of code-block that i picked up
-
-
-
 
 struct FlipTimer : View {
     
